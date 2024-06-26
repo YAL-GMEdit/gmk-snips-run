@@ -1,0 +1,6 @@
+{
+    "name": "gmk-snips-run",
+    "scripts": [
+        "gmk-snips-run.js"
+    ]
+}
