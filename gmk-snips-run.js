@@ -1,6 +1,6 @@
 (function() {
 	const child_process = require("child_process");
-	const Preferences = $gmedit["ui.Preferences"];
+	const Preferences = $gmedit['ui.Preferences'];
 	const Dialog = $gmedit['electron.Dialog'];
 	function run() {
 		if ($gmedit['gml.GmlAPI'].version.name != "gmk-snip") return;
@@ -15,12 +15,17 @@
 			Dialog.showError(`snippet-tester path "${runnerPath}" doesn't exist!`);
 			return;
 		}
-		let listFilePath = $gmedit['gml.Project'].current.path;
+		
+		const project = $gmedit['gml.Project'].current;
+		let listFilePath = project.path;
 		listFilePath = listFilePath.split("/").join("\\");
-		let runnerArgs = [
+		
+		const runnerArgs = [
 			listFilePath,
 		];
-		let runner = child_process.spawn(runnerPath, runnerArgs);
+		let runner = child_process.spawn(runnerPath, runnerArgs, {
+			cwd: project.dir,
+		});
 		runner.on("spawn", () => {
 			console.log("Started up the runner!");
 		});
