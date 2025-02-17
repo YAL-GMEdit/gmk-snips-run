@@ -3,7 +3,7 @@
 	const Preferences = $gmedit["ui.Preferences"];
 	const Dialog = $gmedit['electron.Dialog'];
 	function run() {
-		if ($gmedit['gml.GmlAPI'].version.name != "gmk-snip") return;
+		if ($gmedit['gml.GmlAPI'].version.name != "gmk-snip") return false;
 		
 		console.log("Starting the runner...");
 		let runnerPath = Preferences.current.gmkSnipTesterPath;
